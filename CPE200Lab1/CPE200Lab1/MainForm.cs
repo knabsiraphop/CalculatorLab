@@ -23,7 +23,7 @@ namespace CPE200Lab1
         private string symbol;
         private string remember;
         private double memory;
-        // private string num;
+        //private string num;
 
         private void resetAll()
         {
@@ -317,63 +317,60 @@ namespace CPE200Lab1
                 }
             }
         }
-    }
 
-        /*public void lblDisplay_Click(object sender, EventArgs e)
+        private void lblDisplay_Click(object sender, EventArgs e)
         {
 
         }
 
         private void memmory_Click(object sender, EventArgs e)
         {
-            
+
             string memoryOperate = ((Button)sender).Text;
             switch (memoryOperate)
             {
                 case "MC":
                     remember = "0";
-                    lblDisplay.Text = "0";
-                }
-            }
+                    label1.Text = remember;
+                    break;
+                case "MR":
+                    lblDisplay.Text = remember;
+                    break;
+                case "MS":
+                    remember = lblDisplay.Text;
+                    label1.Text = remember;
+                    break;
+                case "M+":
+                    if (remember == "0") remember = lblDisplay.Text;
+                    remember = (Convert.ToDouble(remember) + Convert.ToDouble(lblDisplay.Text)).ToString();
+                    label1.Text = remember;
+                    break;
+                case "M-":
+                    remember = (Convert.ToDouble(remember) - Convert.ToDouble(lblDisplay.Text)).ToString();
+                    label1.Text = remember;
+                    break;
 
-        private void btnMC_Click(object sender, EventArgs e)
+
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
     }
 
-    private void btnMP_Click(object sender, EventArgs e)
-        {
-            if(lblDisplay.Text is "Error")
-            {
-                return;
-            }
-            memory += Convert.ToDouble(lblDisplay.Text);
-            isAfterOperater = true;
-        }
+}
 
-        private void btnMC_Click(object sender, EventArgs e)
-        {
-            memory = 0;
-        }
+    
 
-        private void btnMM_Click(object sender, EventArgs e)
-        {
-            if(lblDisplay.Text is "Error")
-            {
-                return;
-            }
-            memory -= Convert.ToDouble(lblDisplay.Text);
-            isAfterOperater = true;
-        }
+    
 
-       /* private void btnMR_Click(object sender, EventArgs e)
+     
+
+     /*  private void btnMR_Click(object sender, EventArgs e)
         {
-            if(lblDisplay.Text is "error")
-            {
-                return;
-            }
-            lblDisplay.Text = memory.ToString();
+          
                     label1.Text = remember;
                     break;
                 case "MR":
@@ -394,11 +391,8 @@ namespace CPE200Lab1
                     break;
 
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }*/
-    }
+
+
+    
 
