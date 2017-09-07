@@ -28,13 +28,28 @@ namespace CPE200Lab1
         public string Process(string str)
         {
             string[] parts = str.Split(' ');
-            if(!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
+          
+            //return parts.Length.ToString();
+           if (!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
             {
                 return "E";
-            } else
-            {
-                return calculate(parts[1], parts[0], parts[2], 4);
             }
+            else if (parts.Length > 3)
+            {
+                string Ans;
+                double realAns;
+                int x = (parts.Length - 3) / 2;
+                for(int j = 0; j <= x; j++)
+                {
+                    Ans = calculate(parts[j], parts[j+1], parts[j+2]);
+                }
+            }
+                else
+                {
+                    return calculate(parts[0], parts[1], parts[2], 4);
+                }
+       
+
 
         }
         public string unaryCalculate(string operate, string operand, int maxOutputSize = 8)
@@ -85,7 +100,7 @@ namespace CPE200Lab1
             return "E";
         }
 
-        public string calculate(string operate, string firstOperand, string secondOperand, int maxOutputSize = 8)
+        public string calculate(string firstOperand, string operate, string secondOperand, int maxOutputSize = 8)
         {
             switch (operate)
             {
