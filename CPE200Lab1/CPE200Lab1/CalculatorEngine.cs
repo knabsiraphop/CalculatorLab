@@ -11,7 +11,7 @@ namespace CPE200Lab1
         private bool isNumber(string str)
         {
             double retNum;
-            return Double.TryParse(str, out retNum);
+            return Double.TryParse(str, out retNum); 
         }
 
         private bool isOperator(string str)
