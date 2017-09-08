@@ -8,11 +8,10 @@ namespace CPE200Lab1
 {
     class CalculatorEngine
     {
-        string Ans;
         private bool isNumber(string str)
         {
             double retNum;
-            return Double.TryParse(str, out retNum); 
+            return Double.TryParse(str, out retNum);
         }
 
         private bool isOperator(string str)
@@ -26,35 +25,30 @@ namespace CPE200Lab1
             }
             return false;
         }
+
         public string Process(string str)
         {
-            string[] parts = str.Split(' ');
-           if (!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
+            //Split input string to multiple parts by space
+            List<string> parts = str.Split(' ').ToList<string>();
+            string result;
+            //As long as we have more than one part
+            while(parts.Count > 1)
             {
-                return "E";
+                //Check if the first three is ready for calcuation
+                if(!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
+                {
+                    return "E";
+                } else
+                {
+                    //Calculate the first three
+                    result = calculate(parts[1], parts[0], parts[2], 4);
+                    //Remove the first three
+                    parts.RemoveRange(0, 3);
+                    // Put back the result
+                    parts.Insert(0, result);
+                }
             }
-            return calculate(parts[0], parts[1], parts[2], 4);
-
-            /* if (parts.Length > 3)
-             {
-                 int x = (parts.Length - 3) / 2;
-                 for(int j = 1; j <= x; j++)
-                 {
-                     Ans = calculate(parts[j], parts[j+1], parts[j+2]);
-
-                     for(int i = 1; i <= x; i++)
-                     {
-                         return calculate(Ans, parts[j + 3], parts[j + 4]);
-                     }
-                 }
-             }
-             else if(parts.Length <= 3)
-             {
-                 return calculate(parts[0], parts[1], parts[2], 4);
-             }*/
-
-
-
+            return parts[0];
         }
         public string unaryCalculate(string operate, string operand, int maxOutputSize = 8)
         {
@@ -104,7 +98,7 @@ namespace CPE200Lab1
             return "E";
         }
 
-        public string calculate(string firstOperand, string operate, string secondOperand, int maxOutputSize = 8)
+        public string calculate(string operate, string firstOperand, string secondOperand, int maxOutputSize = 8)
         {
             switch (operate)
             {
