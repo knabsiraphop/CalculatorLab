@@ -24,16 +24,16 @@ namespace CPE200Lab1
 
         public string Process(string str)
         {
-            string result,first,second,operate;
+            
             Stack<string> rpnStack = new Stack<string>();
             string[] parts = str.Split(' ');
-            for(int i = 0; i < parts.Length; i++)
+            for(int i = 0; i < parts.Length-1; i++)
             {
                 if (isOperator(parts[i]) == true)
                 {
-                    second = rpnStack.Pop();
-                    first = rpnStack.Pop();
-
+                    string second = Convert.ToString(rpnStack.Pop());
+                    string first = Convert.ToString(rpnStack.Pop());
+                    rpnStack.Push(calculate(parts[i], first, second));
                   
                 }
                 else
@@ -42,8 +42,8 @@ namespace CPE200Lab1
                     
                 }
             }
-            result = calculate(,first,second)
 
+            return Convert.ToString(rpnStack.Pop());
             /*spilt str to parts
             loop each part
               if part is number
