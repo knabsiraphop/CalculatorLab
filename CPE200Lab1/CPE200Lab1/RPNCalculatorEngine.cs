@@ -64,7 +64,6 @@ namespace CPE200Lab1
             result = rpnStack.Pop();
             double x = Convert.ToDouble(result);
             return x.ToString();
-            
         }
     }
 }
