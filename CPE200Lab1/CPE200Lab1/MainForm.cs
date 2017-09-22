@@ -18,7 +18,7 @@ namespace CPE200Lab1
         private bool isAfterEqual;
         private string firstOperand;
         private string operate;
-        private CalculatorEngine engine;
+        private SimpleCalculatorEngine engine;
         private bool symbolcheck = false;
         private string symbol;
         private string remember;
@@ -39,7 +39,7 @@ namespace CPE200Lab1
         {
             InitializeComponent();
             memory = 0;
-            engine = new CalculatorEngine();
+            engine = new SimpleCalculatorEngine();
             resetAll();
         }
 
